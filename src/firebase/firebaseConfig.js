@@ -4,13 +4,13 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 const configuration = {
-    apiKey: "AIzaSyCHzzNSC8Jz7y3mrGUsje-lVm_Sw9w9RNE",
-    authDomain: "to-do-list-challenge.firebaseapp.com",
-    databaseURL: "https://to-do-list-challenge.firebaseio.com",
-    projectId: "to-do-list-challenge",
-    storageBucket: "to-do-list-challenge.appspot.com",
-    messagingSenderId: "690206682060",
-    appId: "1:690206682060:web:8866e04172fb76152c0b69"
+    apiKey: "AIzaSyDm7k9BI98P853lhJ8baHacswjvE5Bn0JI",
+    authDomain: "customer-feedback-page.firebaseapp.com",
+    databaseURL: "https://customer-feedback-page.firebaseio.com",
+    projectId: "customer-feedback-page",
+    storageBucket: "customer-feedback-page.appspot.com",
+    messagingSenderId: "1076764338532",
+    appId: "1:1076764338532:web:d35217a13a127201093271"
 };
 
 class FirebaseConfig{
@@ -22,9 +22,9 @@ class FirebaseConfig{
 
     async createUserRating(userRating){
         let newUserRating = {
-            name: userRating.id,
+            name: userRating.name,
             email: userRating.email,
-            // description: userRating.rating,
+     //  TODO Add rating once logic is implemented
             comment: userRating.comment,
         }
         const createdUserRating = await firebase.firestore().collection('userRating').add(newUserRating).catch(error => {
@@ -34,22 +34,22 @@ class FirebaseConfig{
         return createdUserRating;
         }
 
-        async getUserRatings(){
-            let getUserRatingItems = [];
-            const userRatings = await firebase.firestore().collection('userRating').get()
-            userRatings.forEach(item => {
-                getUserRatingItems.push({id:item.id, data:item.data() });
-            })
-            console.log('You can get me');
-            return getUserRatingItems;
-        }
+        // async getUserRatings(){
+        //     let getUserRatingItems = [];
+        //     const userRatings = await firebase.firestore().collection('userRating').get()
+        //     userRatings.forEach(item => {
+        //         getUserRatingItems.push({id:item.id, data:item.data() });
+        //     })
+        //     console.log('You can get me');
+        //     return getUserRatingItems;
+        // }
 
-        async getUserRating(userRatingId){
-            const userRating = await firebase.firestore().collection('userRating').doc([userRatingId].get());
-            const userRatingItem = userRating.data();
-            console.log('you can get a single item');
-            return userRatingItem;
-        }
+        // async getUserRating(userRatingId){
+        //     const userRating = await firebase.firestore().collection('userRating').doc([userRatingId].get());
+        //     const userRatingItem = userRating.data();
+        //     console.log('you can get a single item');
+        //     return userRatingItem;
+        // }
 }
 
 
