@@ -1,8 +1,6 @@
 
-import React , { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
 import { Container, Col, Row } from 'styled-bootstrap-grid';
-import { getUserRatings } from '../actions/getUserRatings';
 
 import UserForm from './UserForm';
 import UserRatingChart from './userRatingChart';

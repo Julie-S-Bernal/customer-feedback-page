@@ -5,30 +5,17 @@ import { useSelector } from 'react-redux';
 
 const UserRatingChart = () => {
 
-  //TODO rename variables to better name
-  const getUserRatingsSelector = useSelector((state)=> state.getUserRatings)
-  const users = getUserRatingsSelector && getUserRatingsSelector.userRatings
+  const usersRatingArray = useSelector((state)=> state.getUserRatings)
+  const users = usersRatingArray && usersRatingArray.userRatings
   const starRatings = users.map((user, i)=> {
    return user.data.starRating;
  })
 
- console.log('mapping', starRatings );
-
-  console.log('users', users)
-  console.log(users)
-
-
-  // how many are there of those ones?
   let oneStar = starRatings.filter(x => x === 1).length;
   let twoStar = starRatings.filter(x => x === 2).length;
   let threeStar = starRatings.filter(x => x === 3).length;
   let fourStar = starRatings.filter(x => x === 4).length;
   let fiveStar = starRatings.filter(x => x === 5).length;
-  console.log(oneStar);
-  console.log(twoStar);
-  console.log(threeStar);
-  console.log(fourStar);
-  console.log(fiveStar);
 
   return (
     <div style={{width:'80%',

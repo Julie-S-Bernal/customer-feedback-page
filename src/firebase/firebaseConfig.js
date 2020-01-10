@@ -42,13 +42,6 @@ class FirebaseConfig{
             console.log('You can get me');
             return getUserRatingItems;
         }
-
-        // async getUserRating(userRatingId){
-        //     const userRating = await firebase.firestore().collection('userRating').doc([userRatingId].get());
-        //     const userRatingItem = userRating.data();
-        //     console.log('you can get a single item');
-        //     return userRatingItem;
-        // }
 }
 
 

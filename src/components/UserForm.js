@@ -9,21 +9,21 @@ import { getUserRatings } from '../actions/getUserRatings';
 
 
 const UserForm = () => {
+  const stars = [1,2,3,4,5]
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
-  const stars = [1,2,3,4,5]
   const [starRating, setStarRating] = useState(0);
   const [onHoverStar, setOnHoverStar] = useState(0);
-
 
   const dispatch= useDispatch();
   const actionCreateUserRating = (userRating) => dispatch(createUserRating(userRating))
   const actionGetUserRatings = () => dispatch(getUserRatings())
 
-  const createNewUserRating= async(e) => {
+  const createNewUserRating= (e) => {
     e.preventDefault();
-    const userRating = starRating + 1;
+    const userRating = starRating;
 
     let newUserRating = {
       name,
@@ -31,11 +31,9 @@ const UserForm = () => {
       starRating: userRating,
       comment,
     }
-    console.log('starRating', starRating);
-    await actionCreateUserRating(newUserRating)
-    await actionGetUserRatings()
+    actionCreateUserRating(newUserRating)
+    actionGetUserRatings()
   }
-  console.log('starRating', starRating)
 
   return (
     <>
@@ -50,11 +48,11 @@ const UserForm = () => {
         <VerticalSpacing />
         <label htmlFor='email'>Rate me from 1 to 5 stars: </label>
         <VerticalSpacing />
-        {stars.map((star, index, key)=>(
+        {stars.map((index)=>(
           <div
             key={index}
             className="star"
-            starId={index}
+            id={index}
             rating={starRating || onHoverStar}
             onMouseEnter={() => setOnHoverStar(index)}
             onMouseLeave={() => setOnHoverStar(0)}
@@ -63,7 +61,6 @@ const UserForm = () => {
           >
             <FA name="star"
               size="2x"
-              //To Do make them black of yellow depending their state
               style={starRating && starRating >= index ? {color:'yellow'} : {color:'white'}}
             />
           </div>
