@@ -24,7 +24,7 @@ class FirebaseConfig{
         let newUserRating = {
             name: userRating.name,
             email: userRating.email,
-     //  TODO Add rating once logic is implemented
+            starRating: userRating.starRating,
             comment: userRating.comment,
         }
         const createdUserRating = await firebase.firestore().collection('userRating').add(newUserRating).catch(error => {

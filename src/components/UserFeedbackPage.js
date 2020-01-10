@@ -10,15 +10,6 @@ import UserCommentsList from './UserCommentsList'
 
 
 const UserFeedbackPage= () => {
-  // const dispatch = useDispatch()
-  //   const getUserRatingsSelector = useSelector((state)=> state.getUserRatings)
-  //   const actionGetUserRatings = () => dispatch(getUserRatings())
-
-  //   useEffect(() => {
-  //     actionGetUserRatings()
-  //   },[])
-
-  // console.log('here', getUserRatingsSelector)
 
   return (
     <Container>

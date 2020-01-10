@@ -18,26 +18,26 @@ const CommentContainer=styled.div`
 
 const UserCommentsList= () => {
   const dispatch = useDispatch()
-    const getUserRatingsSelector = useSelector((state)=> state.getUserRatings)
-    const actionGetUserRatings = () => dispatch(getUserRatings())
+  const getUserRatingsSelector = useSelector((state)=> state.getUserRatings)
+  const actionGetUserRatings = () => dispatch(getUserRatings())
 
-    useEffect(() => {
-      actionGetUserRatings()
-    },[])
+  useEffect(() => {
+    actionGetUserRatings()
+  },[])
 
   console.log('here', getUserRatingsSelector.userRatings)
 
   return (
     <>
-    {getUserRatingsSelector && getUserRatingsSelector.userRatings.map((user, j) => { console.log('name', user)
-        return(
+    {getUserRatingsSelector && getUserRatingsSelector.userRatings.map((user, j) => (
      <CommentContainer>
       <div key={j}>
         <h3>{`${user.data.name}`}</h3>
         <p>{`${user.data.comment}`}</p>
+        <p>{`${user.data.starRating}`}</p>
       </div>
       </CommentContainer>
-    )})}
+    ))}
     </>
   )
 }
