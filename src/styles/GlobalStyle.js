@@ -56,6 +56,12 @@ const GlobalStyles = createGlobalStyle`
     font-weight: normal;
     font-family: 'Roboto', sans-serif;
   }
+  h2 {
+    color:  #1b5c87;
+    font-weight: normal;
+    font-family: 'Roboto', sans-serif;
+  }
+
   label {
     color: white;
     font-family: 'Roboto', sans-serif;
