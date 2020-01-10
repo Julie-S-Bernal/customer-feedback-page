@@ -2,6 +2,15 @@
 import React  from 'react';
 import { VictoryBar , VictoryChart, VictoryTheme,} from 'victory';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+
+
+const ChartContainner=styled.div`
+  width: 450px;
+  margin: 0 auto;
+  height: 450px;
+`;
+
 
 const UserRatingChart = () => {
 
@@ -18,15 +27,14 @@ const UserRatingChart = () => {
   let fiveStar = starRatings.filter(x => x === 5).length;
 
   return (
-    <div style={{width:'80%',
-    bottom: '0', height:'80%'}}>
+    <ChartContainner>
       <VictoryChart
         responsive={false}
         animate={{
           duration: 500,
           onLoad: { duration: 200 }
         }}
-        ddomainPadding={40}
+        ddomainPadding={10}
         theme={VictoryTheme.material}
       >
         <VictoryBar
@@ -44,7 +52,7 @@ const UserRatingChart = () => {
         />
       </VictoryChart>
 
-    </div>
+    </ChartContainner>
   )
 }
 export default UserRatingChart;

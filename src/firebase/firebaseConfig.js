@@ -39,7 +39,6 @@ class FirebaseConfig{
             userRatings.forEach(item => {
                 getUserRatingItems.push({id:item.id, data:item.data() });
             })
-            console.log('You can get me');
             return getUserRatingItems;
         }
 }

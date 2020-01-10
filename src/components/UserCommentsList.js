@@ -26,17 +26,13 @@ const UserCommentsList= () => {
     actionGetUserRatings()
   },[])
 
-  console.log('here', getUserRatingsSelector.userRatings)
-
   return (
     <>
-    {getUserRatingsSelector && getUserRatingsSelector.userRatings.map((user, j) => (
-     <CommentContainer>
-      <div key={j}>
+    {getUserRatingsSelector && getUserRatingsSelector.userRatings.map((user, index) => (
+      <CommentContainer key={index}>
         <h3>{`${user.data.name}`}</h3>
         <p>{`${user.data.comment}`}</p>
         <p>{`${user.data.starRating}`}</p>
-      </div>
       </CommentContainer>
     ))}
     </>
