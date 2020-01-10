@@ -1,20 +1,21 @@
 
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import VerticalSpacing from '../styles/VerticalSpacing';
 import { createUserRating } from '../actions/createUserRating';
 
 
-const UserForm = (props) => {
+const UserForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [rating, setRating] = useState('');
-  const [userRating, setUserRating] = useState();
+  const [starRating, setStarRating] = useState();
   const [comment, setComment] = useState('');
 
+
   const dispatch= useDispatch();
-  const actionUserRating = (userRating) => dispatch(createUserRating(userRating))
+  const actionCreateUserRating = (userRating) => dispatch(createUserRating(userRating))
 
   const createNewUserRating= async(e) => {
     e.preventDefault();
@@ -25,13 +26,12 @@ const UserForm = (props) => {
      //  TODO Add rating once logic is implemented
       comment,
     }
-    await actionUserRating(newUserRating)
+    await actionCreateUserRating(newUserRating)
   }
 
   return (
     <>
       <form onSubmit={createNewUserRating}>
-        <h2 style={{textAlign: 'center'}}>Please Rate the Form!</h2>
         <label htmlFor='name'>Name: </label>
         <VerticalSpacing />
         <input className='formInput' type="text" name='name' onChange={(event) => setName(event.target.value)} ></input>

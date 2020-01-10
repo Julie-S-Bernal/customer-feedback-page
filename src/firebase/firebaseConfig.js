@@ -30,19 +30,18 @@ class FirebaseConfig{
         const createdUserRating = await firebase.firestore().collection('userRating').add(newUserRating).catch(error => {
           console.log(error);
         });
-        console.log('I am created')
         return createdUserRating;
         }
 
-        // async getUserRatings(){
-        //     let getUserRatingItems = [];
-        //     const userRatings = await firebase.firestore().collection('userRating').get()
-        //     userRatings.forEach(item => {
-        //         getUserRatingItems.push({id:item.id, data:item.data() });
-        //     })
-        //     console.log('You can get me');
-        //     return getUserRatingItems;
-        // }
+        async getUserRatings(){
+            let getUserRatingItems = [];
+            const userRatings = await firebase.firestore().collection('userRating').get()
+            userRatings.forEach(item => {
+                getUserRatingItems.push({id:item.id, data:item.data() });
+            })
+            console.log('You can get me');
+            return getUserRatingItems;
+        }
 
         // async getUserRating(userRatingId){
         //     const userRating = await firebase.firestore().collection('userRating').doc([userRatingId].get());

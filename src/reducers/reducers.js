@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 
 import createUserRating from './createUserRating';
-// import getUserRatings from './getToDos';
-// import getUserrating from './getToDo';
+import getUserRatings from './getUserRatings';
+// import getUserRating from './getUserRating ';
 
 
 const reducers = combineReducers({
   createUserRating,
-//   getUserRatings,
-//   getUserrating,
+  getUserRatings,
+//   getUserRating,
 });
 
 export default reducers;
