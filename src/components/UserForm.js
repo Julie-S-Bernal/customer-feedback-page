@@ -1,32 +1,38 @@
 
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import FA from 'react-fontawesome';
 
 import VerticalSpacing from '../styles/VerticalSpacing';
 import { createUserRating } from '../actions/createUserRating';
+import { getUserRatings } from '../actions/getUserRatings';
 
 
 const UserForm = () => {
+  const stars = [1,2,3,4,5]
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [rating, setRating] = useState('');
-  const [starRating, setStarRating] = useState();
   const [comment, setComment] = useState('');
-
+  const [starRating, setStarRating] = useState(0);
+  const [onHoverStar, setOnHoverStar] = useState(0);
 
   const dispatch= useDispatch();
   const actionCreateUserRating = (userRating) => dispatch(createUserRating(userRating))
+  const actionGetUserRatings = () => dispatch(getUserRatings())
 
-  const createNewUserRating= async(e) => {
+  const createNewUserRating= (e) => {
     e.preventDefault();
+    const userRating = starRating;
 
     let newUserRating = {
       name,
       email,
-     //  TODO Add rating once logic is implemented
+      starRating: userRating,
       comment,
     }
-    await actionCreateUserRating(newUserRating)
+    actionCreateUserRating(newUserRating)
+    actionGetUserRatings()
   }
 
   return (
@@ -40,9 +46,25 @@ const UserForm = () => {
         <VerticalSpacing />
         <input className='formInput'type="text" name='email' onChange={(event) => setEmail(event.target.value)} ></input>
         <VerticalSpacing />
-        <label htmlFor='email'>Rate me: </label>
+        <label htmlFor='email'>Rate me from 1 to 5 stars: </label>
         <VerticalSpacing />
-        {/* //TODO: Add star logic */}
+        {stars.map((index)=>(
+          <div
+            key={index}
+            className="star"
+            id={index}
+            rating={starRating || onHoverStar}
+            onMouseEnter={() => setOnHoverStar(index)}
+            onMouseLeave={() => setOnHoverStar(0)}
+            onClick={() => setStarRating((index))}
+            style={{float: 'left', paddingBottom: '10px'}}
+          >
+            <FA name="star"
+              size="2x"
+              style={starRating && starRating >= index ? {color:'yellow'} : {color:'white'}}
+            />
+          </div>
+        ))}
         <input className='formInput'type="text" name='comment' placeholder='Leave a comment...' onChange={(event) => setComment(event.target.value)} ></input>
         <VerticalSpacing />
         <input className='button' type='submit' value='Submit Rating' />

@@ -1,6 +1,7 @@
 import React , { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+
 import { getUserRatings } from '../actions/getUserRatings';
 
 
@@ -18,26 +19,22 @@ const CommentContainer=styled.div`
 
 const UserCommentsList= () => {
   const dispatch = useDispatch()
-    const getUserRatingsSelector = useSelector((state)=> state.getUserRatings)
-    const actionGetUserRatings = () => dispatch(getUserRatings())
+  const getUserRatingsSelector = useSelector((state)=> state.getUserRatings)
+  const actionGetUserRatings = () => dispatch(getUserRatings())
 
-    useEffect(() => {
-      actionGetUserRatings()
-    },[])
-
-  console.log('here', getUserRatingsSelector.userRatings)
+  useEffect(() => {
+    actionGetUserRatings()
+  },[])
 
   return (
     <>
-    {getUserRatingsSelector && getUserRatingsSelector.userRatings.map((user, j) => { console.log('name', user)
-        return(
-     <CommentContainer>
-      <div key={j}>
+    {getUserRatingsSelector && getUserRatingsSelector.userRatings.map((user, index) => (
+      <CommentContainer key={index}>
         <h3>{`${user.data.name}`}</h3>
         <p>{`${user.data.comment}`}</p>
-      </div>
+        <p>{`${user.data.starRating}`}</p>
       </CommentContainer>
-    )})}
+    ))}
     </>
   )
 }
