@@ -1,3 +1,32 @@
+## Info
+
+This project was built with Firebase, React-hooks and Redux. I wanted to make it a learning experience so I used Redux which I have not used in about a year and improve my knowledge of react-hooks as well. I also used victory chart to render the graph. 
+
+## Future features
+
+Error handlers
+Attach a real survey as previous step
+user authentication
+Increase responsiveness especially for mobile phone
+Tests
+
+
+## Run project
+
+you can run the project with `npm start`
+
+
+## Additional set-up needed if you would like to play around with this project
+
+If you would like to clone this project and play around with it, since it is using Firebase you will need to replace my credentials with  with your own credentials.
+
+On Firebase Dashboard, create a new account.Then create a new project and enable database.You should enable the testing option unless you would like to deploy your project. You will be able to find your sdk snippet by clicking on the gear right next to project overview, at the bottom of the general page. You can then copy and replace it in my configuration constant in the firebaseConfig.js 
+
+https://firebase.google.com/
+
+If you would like to add authentication just click on the authentication tab underneath project overview and pick the options that you need.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
