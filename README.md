@@ -2,6 +2,8 @@
 
 This project was built with Firebase, React-hooks and Redux. I wanted to make it a learning experience so I used Redux which I have not used in about a year and improve my knowledge of react-hooks as well. I also used victory chart to render the graph. 
 
+![Survey image](https://github.com/Julie-S-Bernal/customer-feedback-page/issues/4#issue-550242787)
+
 ## Future features
 
 Error handlers
